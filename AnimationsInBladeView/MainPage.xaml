@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="AnimationsInBladeView.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:custom="using:AnimationsInBladeView.Custom"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Content>
+
+        <Grid>
+
+            <!--A stack with a button to show the BladeView AND a simple animation 
+                to show that implicit animations work outside the BladeView.-->
+            <StackPanel
+                HorizontalAlignment="Center"
+                Spacing="30"
+                VerticalAlignment="Center">
+
+                <Button
+                    Content="Show Blade ->"
+                    Tapped="Button_OnTapped"/>
+
+                <custom:SimpleAnimation/>
+
+            </StackPanel>
+
+
+
+            <!--A BladeView control with a single blade containing a simple animation.
+                The implicit animation does NOT work within the BladeView/BladeItem.-->
+            <controls:BladeView
+                x:Name="ImplicitAnimationsBladeView"
+                BladeMode="Normal"
+                Visibility="Collapsed"  
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+
+
+                <controls:BladeItem
+                    x:Name="ImplicitAnimationsBladeItem"
+                    Header="Configurations"
+                    IsOpen="False"
+                    VerticalAlignment="Stretch"
+                    Width="400">
+
+                    <custom:SimpleAnimation/>
+
+                </controls:BladeItem>
+
+            </controls:BladeView>
+
+        </Grid>
+
+    </Page.Content>
+
+</Page>
